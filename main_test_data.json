@@ -1,0 +1,494 @@
+[
+  {
+    "question": [
+      "What is the main contribution of the paper 'Speculative Thinking'?",
+      "Who are the authors of the paper and their affiliations?",
+      "How does speculative thinking differ from speculative decoding?"
+    ],
+    "ground_truth": [
+      "It introduces a training-free framework to enhance reasoning in small language models by using larger models for guidance during inference.",
+      "Wang Yang, Xiang Yue, Vipin Chaudhary, and Xiaotian Han, affiliated with Case Western Reserve University and Carnegie Mellon University.",
+      "Speculative thinking operates at the reasoning level, while speculative decoding operates at the token level."
+    ]
+  },
+  {
+    "question": [
+      "What performance improvements did speculative thinking achieve on the MATH500 dataset?",
+      "Which type of tokens serve as signals for reflection or continuation?",
+      "How does speculative thinking improve non-reasoning models like Qwen-2.5-7B-Instruct?"
+    ],
+    "ground_truth": [
+      "The 1.5B model’s accuracy increased from 83.2% to 89.4% with the help of a 32B model, and the average output length decreased by 15.7%.",
+      "Reasoning-supportive tokens such as 'wait' that often follow structural delimiters like '\\n\\n'.",
+      "It improves their performance on benchmarks such as MATH500 by boosting reasoning accuracy with guidance from a larger model."
+    ]
+  },
+  {
+    "question": [
+      "What accuracy and output length improvements did speculative thinking achieve on the AIME dataset?",
+      "What was the observed improvement on the GPQA dataset?",
+      "How much was the output length reduced on the AMC23 dataset?"
+    ],
+    "ground_truth": [
+      "It achieved a +6.7% improvement in accuracy and an -11.8% decrease in average output length.",
+      "An accuracy increase of +8.1% and a -4.0% decrease in output length.",
+      "A -16.9% decrease in average output length."
+    ]
+  },
+  {
+    "question": [
+      "What does Figure 1 illustrate about speculative thinking?",
+      "Which models are compared in Figure 1?",
+      "Where is the code for speculative thinking available?"
+    ],
+    "ground_truth": [
+      "It shows that speculative thinking improves the reasoning accuracy of the 1.5B model while reducing average output length across four datasets.",
+      "The Deepseek-Distilled Qwen 2.5-1.5B, Qwen 2.5-32B, and the combined 1.5B+32B speculative thinking method.",
+      "The code is available at https://github.com/uservan/speculative_thinking."
+    ]
+  },
+  {
+    "question": [
+      "Why are smaller language models widely used in real-world applications?",
+      "What challenges do smaller models face in complex reasoning tasks?",
+      "What are the limitations of post-training methods like supervised fine-tuning or reinforcement learning?"
+    ],
+    "ground_truth": [
+      "Because they require lower computational and memory resources.",
+      "They often underperform on tasks requiring complex reasoning.",
+      "They are costly, data-intensive, and difficult to scale."
+    ]
+  },
+  {
+    "question": [
+      "What is the central question motivating speculative thinking?",
+      "Why are larger models impractical for many deployment scenarios?",
+      "What limitation is observed in inference-time scaling methods without retraining?"
+    ],
+    "ground_truth": [
+      "Whether small reasoning models can be improved during inference by selectively leveraging large models without additional training.",
+      "Because of their high inference cost and latency.",
+      "They often yield limited or inconsistent improvements, especially on complex tasks."
+    ]
+  },
+  {
+    "question": [
+      "What inspired the development of speculative thinking?",
+      "At what level does speculative thinking operate compared to speculative decoding?",
+      "How are difficult reasoning segments identified for delegation to a larger model?"
+    ],
+    "ground_truth": [
+      "Speculative decoding, which accelerates generation by verifying small model outputs with a larger model.",
+      "Speculative thinking operates at the reasoning level, while speculative decoding operates at the token level.",
+      "They are identified through structural cues, such as paragraph breaks ('\\n\\n') followed by reflective phrases like 'wait' or 'alternatively'."
+    ]
+  },
+  {
+    "question": [
+      "What accuracy improvement did the 1.5B model achieve on AIME with the help of a 32B model?",
+      "How much did the Qwen-2.5-7B-Instruct improve on GPQA with speculative thinking?",
+      "What is the key advantage of speculative thinking according to the results?"
+    ],
+    "ground_truth": [
+      "It improved by +6.6% on AIME.",
+      "It improved by +14.2% on GPQA when assisted by the 32B mentor.",
+      "It preserves the efficiency of small models while leveraging the reasoning strength of large models."
+    ]
+  },
+  {
+    "question": [
+      "What new paradigm does speculative thinking introduce?",
+      "What is the potential benefit of speculative thinking for real-world inference?",
+      "What does the paper suggest about combining small and large models?"
+    ],
+    "ground_truth": [
+      "An inference-time paradigm that fuses the efficiency of small models with the reasoning strength of large models.",
+      "It opens a path toward cost-effective reasoning augmentation for real-world inference.",
+      "That large models can selectively assist small models during inference to improve reasoning."
+    ]
+  },
+  {
+    "question": [
+      "Which reasoning-supportive tokens are commonly generated during inference?",
+      "What structural clue often precedes reasoning-supportive tokens?",
+      "What was the purpose of analyzing the preceding token distribution for reasoning-supportive tokens?"
+    ],
+    "ground_truth": [
+      "Tokens such as 'wait', 'hmm', and 'alternatively'.",
+      "The newline symbol '\\n\\n'.",
+      "To uncover patterns in model reasoning and optimize reasoning capabilities."
+    ]
+  },
+  {
+    "question": [
+      "What does the modify ratio indicate in the context of Speculative Thinking?",
+      "What improvements were observed for the 1.5B model on the AIME dataset with the help of a 32B model?",
+      "Why did the authors choose theoretical FLOP estimation instead of empirical runtime measurements?"
+    ],
+    "ground_truth": [
+      "The proportion of tokens in the final output that come from the target model.",
+      "Accuracy improved by +6.6%, average output length decreased by -11.7%, and estimated speed improved by +185.9%.",
+      "Because runtime measurements would be significantly affected by backend GPU optimizations, especially in systems like vLLM."
+    ]
+  },
+  {
+    "question": [
+      "What was the accuracy improvement of the 1.5B model on the GPQA dataset with the help of a 32B model?",
+      "How was the GPU computational capacity set for the experiments?",
+      "What formula was used to estimate inference speed?"
+    ],
+    "ground_truth": [
+      "Accuracy improved by +8.1% on GPQA with the help of a 32B model.",
+      "It was set to 3.12 × 10^10 FLOPs/s, corresponding to an A100-class GPU.",
+      "Estimated Speed = Total Tokens / (FLOPsprefill + FLOPsprefix + FLOPsdecode) / GPU Capacity."
+    ]
+  },
+  {
+    "question": [
+      "Which three evaluation metrics were used to assess speculative thinking?",
+      "What consistent trend was observed when the 32B target model assisted the 1.5B speculative model?",
+      "Which datasets were used in the experiments?"
+    ],
+    "ground_truth": [
+      "Accuracy, average output length, and estimated inference speed.",
+      "It consistently improved accuracy, reduced unnecessary output length, and enhanced inference speed.",
+      "AIME 2022–2024, GPQA-Diamond, MATH500, and AMC23."
+    ]
+  },
+  {
+    "question": [
+      "What accuracy gains were observed for the 1.5B model assisted by the 32B model on four datasets?",
+      "How much was the average output length reduced for the 1.5B model on the AMC23 dataset?",
+      "How did the 1.5B+32B combination compare to the standalone 32B model in estimated generation speed?"
+    ],
+    "ground_truth": [
+      "+6.2% on MATH500, +8.1% on GPQA, +5.0% on AMC23, and +6.6% on AIME.",
+      "-16.9%.",
+      "The 1.5B model assisted by the 32B model consistently outperformed the standalone 32B model in generation speed."
+    ]
+  },
+  {
+    "question": [
+      "What proportion of the speculative model’s output needed to be modified by the target model to enhance reasoning performance?",
+      "What did Figure 5 reveal about prefix and decode stages?",
+      "What was the measured decode time for 1 token in the 1.5B model?"
+    ],
+    "ground_truth": [
+      "Approximately 20%.",
+      "That processing multiple tokens in the prefix phase takes nearly the same time as decoding a single token.",
+      "0.036 seconds."
+    ]
+  },
+  {
+    "question": [
+      "How did Qwen-2.5-7B-Instruct’s accuracy change on MATH500 when assisted by a 32B model?",
+      "What trade-off was observed when augmenting non-reasoning models with speculative thinking?",
+      "Which reasoning models provided notable improvements to non-reasoning models?"
+    ],
+    "ground_truth": [
+      "It improved from 74.0% to 81.8%.",
+      "Improvements in reasoning ability came at the cost of increased output length.",
+      "7B and 32B reasoning models."
+    ]
+  },
+  {
+    "question": [
+      "Why did assistance from the 1.5B reasoning model not consistently improve non-reasoning models?",
+      "What guideline did the authors suggest for choosing a target model in speculative thinking?",
+      "What risk arises when the speculative model is stronger than the target model?"
+    ],
+    "ground_truth": [
+      "Because it lacked sufficient reasoning capability to provide consistent improvements.",
+      "The target model should be of equal size or larger and possess stronger reasoning capabilities.",
+      "It may lead to suboptimal or even detrimental outcomes."
+    ]
+  },
+  {
+    "question": [
+      "What modification was applied for speculative thinking in non-reasoning models?",
+      "Why was the target model allowed to generate the first 100 tokens before question answering?",
+      "What observation about reasoning models motivated this modification?"
+    ],
+    "ground_truth": [
+      "The target model directly generated the next sentence after each '\\n\\n'.",
+      "To enhance the speculative model’s setup before answering questions.",
+      "Reasoning models often preface answers with structured setups that guide generation."
+    ]
+  },
+  {
+    "question": [
+      "What problem does speculative decoding face that speculative thinking avoids?",
+      "How does speculative thinking differ from speculative decoding in its reliance on token distributions?",
+      "What accuracy performance does speculative decoding achieve compared to the 32B model?"
+    ],
+    "ground_truth": [
+      "Speculative decoding suffers from high rejection rates, with nearly 50% of tokens needing regeneration.",
+      "Speculative thinking does not require strict alignment of token output distributions.",
+      "It matches the accuracy of the 32B model but with diminished speed."
+    ]
+  },
+  {
+    "question": [
+      "What are the two primary categories of approaches to enhance LLM reasoning?",
+      "Which method did DeepSeek use to achieve state-of-the-art reasoning performance?",
+      "What was one of the key insights from Ji et al. (2025) regarding reasoning optimization?"
+    ],
+    "ground_truth": [
+      "Reinforcement learning and supervised fine-tuning.",
+      "GRPO (Generalized Reinforcement Policy Optimization).",
+      "That the initial few tokens in each reasoning instance are critical for optimizing model performance."
+    ]
+  },
+  {
+    "question": [
+      "What was one early approach proposed for efficient reasoning?",
+      "What is the main idea behind TokenSkip?",
+      "What phenomenon did Wang et al. (2025) and Sui et al. (2025a) highlight when reasoning fails?"
+    ],
+    "ground_truth": [
+      "Kimi 1.5, which introduced the Long-to-Short method.",
+      "It improves efficiency by removing redundant or uninformative tokens from training data.",
+      "Outputs become significantly longer due to repetitive generation of reasoning-supportive tokens."
+    ]
+  },
+  {
+    "question": [
+      "What is the core idea of speculative thinking?",
+      "How does it enhance smaller models’ reasoning during inference?",
+      "What key assumption about models does the framework currently make?"
+    ],
+    "ground_truth": [
+      "A training-free framework where larger reasoning models guide smaller ones through selective delegation.",
+      "By exploiting natural reasoning patterns like reflection cues (e.g., '\\n\\n').",
+      "That both models belong to the same family, enabling shared KV cache structures for acceleration."
+    ]
+  },
+  {
+    "question": [
+      "Why is speculative thinking sensitive to prompt quality?",
+      "What type of optimized prompt improves its performance?",
+      "What example prompt was given by the authors?"
+    ],
+    "ground_truth": [
+      "Because optimized prompts are critical to achieving the best reasoning performance.",
+      "Ones that encourage structured step-by-step reasoning with clear final answers.",
+      "“Please reason step by step, and put your final answer within \\boxed{}.”"
+    ]
+  },
+  {
+    "question": [
+      "Who are the authors of 'Sketch-of-thought: Efficient LLM reasoning with adaptive cognitive-inspired sketching'?",
+      "What is the title of the work by David D. Baek and Max Tegmark listed in the references?",
+      "Which survey discusses LLM-based reasoning strategies?"
+    ],
+    "ground_truth": [
+      "Simon A Aytes, Jinheon Baek, and Sung Ju Hwang",
+      "Towards understanding distilled reasoning models: A representational approach",
+      "Thinking machines: A survey of LLM based reasoning strategies by Dibyanayan Bandyopadhyay, Soham Bhattacharjee, and Asif Ekbal"
+    ]
+  },
+  {
+    "question": [
+      "Who authored 'Towards reasoning era: A survey of long chain-of-thought for reasoning large language models'?",
+      "What is the title of Xinghao Chen et al.’s 2025 work?",
+      "Which 2024 paper by Yushuo Chen et al. addresses inference efficiency?"
+    ],
+    "ground_truth": [
+      "Qiguang Chen, Libo Qin, Jinhao Liu, Dengyun Peng, Jiannan Guan, Peng Wang, Mengkang Hu, Yuhang Zhou, Te Gao, and Wangxiang Che",
+      "Unveiling the key factors for distilling chain-of-thought reasoning",
+      "Towards coarse-to-fine evaluation of inference efficiency for large language models"
+    ]
+  },
+  {
+    "question": [
+      "What is the title of Li Chenglin et al.’s 2024 EMNLP paper?",
+      "Which system was presented in the work by Yichao Fu et al.?",
+      "What is the title of Xiaotian Han’s 2024 blog post?"
+    ],
+    "ground_truth": [
+      "Mixed distillation helps smaller language models reason better",
+      "Certaindex: Efficiently serving LLM reasoning programs",
+      "Reproduce the inference time scaling exp"
+    ]
+  },
+  {
+    "question": [
+      "Which 2024 work by OpenAI is cited in the references?",
+      "What is the title of Ke Ji et al.’s 2025 paper?",
+      "Which conference hosted Woosuk Kwon et al.’s PagedAttention paper?"
+    ],
+    "ground_truth": [
+      "OpenAI o1 system card",
+      "The first few tokens are all you need: An efficient and effective unsupervised prefix fine-tuning method for reasoning models",
+      "Proceedings of the ACM SIGOPS 29th Symposium on Operating Systems Principles (2023)"
+    ]
+  },
+  {
+    "question": [
+      "What is the title of Bespoke Labs’ 2025 blog post?",
+      "Who authored 'How well do LLMs compress their own chain-of-thought? A token complexity approach'?",
+      "Which 2023 paper by Yaniv Leviathan et al. is cited?"
+    ],
+    "ground_truth": [
+      "Bespoke-stratos: The unreasonable effectiveness of reasoning distillation",
+      "Ayeong Lee, Ethan Che, and Tianyi Peng",
+      "Fast inference from transformers via speculative decoding"
+    ]
+  },
+  {
+    "question": [
+      "What is the title of Yuetai Li et al.’s 2025 preprint?",
+      "Which survey by Zhong-Zhi Li et al. is cited?",
+      "What approach is introduced by Baohao Liao et al. in 2025?"
+    ],
+    "ground_truth": [
+      "Small models struggle to learn from strong reasoners",
+      "From system 1 to system 2: A survey of reasoning large language models",
+      "Reward-guided speculative decoding for efficient LLM reasoning"
+    ]
+  },
+  {
+    "question": [
+      "Who are the authors of 'Let’s verify step by step'?",
+      "What is the title of Runze Liu et al.’s 2025 work?",
+      "Which 2025 paper critiques r1-zero-like training?"
+    ],
+    "ground_truth": [
+      "Hunter Lightman, Vineet Kosaraju, Yura Burda, Harri Edwards, Bowen Baker, Teddy Lee, Jan Leike, John Schulman, Ilya Sutskever, and Karl Cobbe",
+      "Can 1B LLM surpass 405B LLM? Rethinking compute-optimal test-time scaling",
+      "Understanding r1-zero-like training: A critical perspective by Zichen Liu et al."
+    ]
+  },
+  {
+    "question": [
+      "What is the title of Zhenyan Lu et al.’s 2025 paper?",
+      "Which work introduces 's1: Simple test-time scaling'?",
+      "Who authored 'A survey of small language models' in 2024?"
+    ],
+    "ground_truth": [
+      "Small language models: Survey, measurements, and insights",
+      "Niklas Muennighoff, Zitong Yang, Weijia Shi, Xiang Lisa Li, Li Fei-Fei, Hannaneh Hajishirzi, Luke Zettlemoyer, Percy Liang, Emmanuel Candès, and Tatsunori Hashimoto",
+      "Chien Van Nguyen, Xuan Shen, Ryan Aponte, Yu Xia, Samyadeep Basu, Zhengmian Hu, Jian Chen, Mihir Parmar, Sasidhar Kunapuli, Joe Barrow, Junda Wu, Ashish Singh, Yu Wang, Jiuxiang Gu, Franck Dernoncourt, Nesreen K. Ahmed, Nedim Lipka, Ruiyi Zhang, Xiang Chen, Tong Yu, Sungchul Kim, Hanieh Deilamsalehy, Namyong Park, Mike Rimer, Zhehao Zhang, Huanrui Yang, Ryan A. Rossi, and Thien Huu Nguyen"
+    ]
+  },
+  {
+    "question": [
+      "Who authored 'Reasoning with large language models, a survey'?",
+      "What is the title of Rafael Rafailov et al.’s 2023 paper?",
+      "What benchmark did David Rein et al. introduce in 2024?"
+    ],
+    "ground_truth": [
+      "Aske Plaat, Annie Wong, Suzan Verberne, Joost Broekens, Niki van Stein, and Thomas Back",
+      "Direct preference optimization: Your language model is secretly a reward model",
+      "GPQA: A graduate-level google-proof Q&A benchmark"
+    ]
+  },
+  {
+    "question": [
+      "Which 2017 algorithm by John Schulman et al. is cited?",
+      "What dataset is introduced in Zhihong Shao et al.’s 2024 work?",
+      "Which 2025 paper discusses the reasoning ability of small language models?"
+    ],
+    "ground_truth": [
+      "Proximal Policy Optimization algorithms",
+      "DeepseekMath: Pushing the limits of mathematical reasoning in open language models",
+      "Towards reasoning ability of small language models by Gaurav Srivastava, Shuxiang Cao, and Xuan Wang"
+    ]
+  },
+  {
+    "question": [
+      "What is the title of Yang Sui et al.’s 2025 survey?",
+      "Which 2023 survey is authored by Jiankai Sun et al.?",
+      "Which 2025 work introduces Meta-Reasoner?"
+    ],
+    "ground_truth": [
+      "Stop overthinking: A survey on efficient reasoning for large language models",
+      "A survey of reasoning with foundation models",
+      "Meta-Reasoner: Dynamic guidance for optimized inference-time reasoning in large language models"
+    ]
+  },
+  {
+    "question": [
+      "What is the title of the Kimi Team’s 2025 preprint?",
+      "Which NovaSky Team blog post explains cutting reasoning costs by 50%?",
+      "Who authored 'Think twice: Enhancing LLM reasoning by scaling multi-round test-time thinking'?"
+    ],
+    "ground_truth": [
+      "Kimi K1.5: Scaling reinforcement learning with LLMs",
+      "Think less, achieve more: Cut reasoning costs by 50",
+      "Xiaoyu Tian, Sitong Zhao, Haotian Wang, Shuaiting Chen, Yunjie Ji, Yiping Peng, Han Zhao, and Xiangang Li"
+    ]
+  },
+  {
+    "question": [
+      "What is the title of Yue Wang et al.’s 2025 preprint?",
+      "Which 2025 paper introduces TokenSkip?",
+      "What is the title of Tian Xie et al.’s 2025 work?"
+    ],
+    "ground_truth": [
+      "Thoughts are all over the place: On the underthinking of o1-like LLMs",
+      "TokenSkip: Controllable chain-of-thought compression in LLMs",
+      "Logic-RL: Unleashing LLM reasoning with rule-based reinforcement learning"
+    ]
+  },
+  {
+    "question": [
+      "What is the title of Silei Xu et al.’s 2025 work?",
+      "Which 2024 technical report is authored by the Qwen2.5 team?",
+      "What is the title of Yixin Ye et al.’s 2025 work?"
+    ],
+    "ground_truth": [
+      "Chain of draft: Thinking faster by writing less",
+      "Qwen2.5 Technical Report",
+      "LIMO: Less is more for reasoning"
+    ]
+  },
+  {
+    "question": [
+      "What is the title of Edward Yeo et al.’s 2025 paper?",
+      "Which 2025 system is described by Qiying Yu et al.?",
+      "What zoo is investigated by Weihao Zeng et al. in 2025?"
+    ],
+    "ground_truth": [
+      "Demystifying long chain-of-thought reasoning in LLMs",
+      "DAPO: An open-source LLM reinforcement learning system at scale",
+      "SimplerL-Zoo: Investigating and taming zero reinforcement learning for open base models in the wild"
+    ]
+  },
+  {
+    "question": [
+      "What modification does speculative thinking make when applied to non-reasoning models?",
+      "What mechanism is used to decide whether a non-reasoning model’s reasoning segment should be replaced?",
+      "What does speculative thinking aim to improve when applied to non-reasoning models?"
+    ],
+    "ground_truth": [
+      "It adapts the Affirmation/Reflection Takeover to monitor a speculative model that lacks inherent reasoning capability.",
+      "It checks whether the reflection segment of the non-reasoning model matches the reasoning generated by the larger model.",
+      "It aims to enhance the performance and accuracy of non-reasoning models by incorporating reasoning from larger models."
+    ]
+  },
+  {
+    "question": [
+      "What is the main idea behind extending speculative thinking to non-reasoning models?",
+      "Which models are specifically mentioned as lacking inherent reasoning capability?",
+      "What happens when the reflection generated by a non-reasoning model does not align with a large model’s reasoning?"
+    ],
+    "ground_truth": [
+      "To leverage reasoning-capable models to enhance the performance of models without reasoning skills.",
+      "Smaller non-reasoning models such as certain Qwen versions.",
+      "The speculative thinking framework replaces the reflection with the reasoning generated by the larger model."
+    ]
+  },
+  {
+    "question": [
+      "What is the purpose of combining speculative thinking with non-reasoning models?",
+      "How does speculative thinking ensure consistency in reasoning when applied to non-reasoning models?",
+      "What is the outcome of applying speculative thinking to non-reasoning models in terms of reasoning quality?"
+    ],
+    "ground_truth": [
+      "To enhance their accuracy and reasoning ability without retraining.",
+      "By monitoring reflections and replacing them with large-model reasoning when misalignment is detected.",
+      "It improves reasoning quality and overall performance of non-reasoning models."
+    ]
+  }
+]
