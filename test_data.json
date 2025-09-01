@@ -1,0 +1,316 @@
+[
+  {
+    "question": [
+      "Who are the authors of the paper 'Speculative Thinking: Enhancing Small-Model Reasoning with Large Model Guidance at Inference Time'?",
+      "Which institutions are the authors affiliated with?",
+      "What key limitation of existing post-training approaches does this paper aim to overcome?"
+    ],
+    "ground_truth": [
+      "Wang Yang, Xiang Yue, Vipin Chaudhary, and Xiaotian Han",
+      "Case Western Reserve University and Carnegie Mellon University",
+      "They require costly training pipelines and still produce inefficient, overly lengthy outputs."
+    ]
+  },
+  {
+    "question": [
+      "By how much did the 1.5B model’s accuracy improve on MATH500 when assisted by the 32B reasoning model?",
+      "What was the reduction in average output length for the 1.5B model on MATH500 with assistance?",
+      "What accuracy improvement did the framework provide for Qwen-2.5-7B-Instruct on MATH500?"
+    ],
+    "ground_truth": [
+      "6.2%, from 83.2% to 89.4%",
+      "15.7%, from 5439 tokens to 4583 tokens",
+      "7.8%, from 74.0% to 81.8%"
+    ]
+  },
+  {
+    "question": [
+      "Which four datasets were used to evaluate speculative thinking in Figure 1?",
+      "What does '1.5B+32B' represent in the evaluation?",
+      "Where is the official code for speculative thinking available?"
+    ],
+    "ground_truth": [
+      "AIME 2020–2024, MATH500, GPQA, and AMC23",
+      "The 32B model supervises reflective reasoning steps of the 1.5B model during inference.",
+      "https://github.com/uservan/speculative_thinking"
+    ]
+  },
+  {
+    "question": [
+      "Why are smaller language models widely used in real-world applications?",
+      "What challenges do smaller models face on reasoning tasks?",
+      "What kind of post-training is often applied to improve smaller models?"
+    ],
+    "ground_truth": [
+      "Because of their lower computational and memory requirements.",
+      "They often underperform on tasks requiring complex reasoning.",
+      "Supervised fine-tuning on reasoning traces or reinforcement learning with verifiable signals."
+    ]
+  },
+  {
+    "question": [
+      "What motivates the question of whether small reasoning models can be improved during inference without additional training?",
+      "What is speculative decoding?",
+      "Why are larger models impractical for many deployment scenarios?"
+    ],
+    "ground_truth": [
+      "Small models show limited improvements with training-free inference methods, while larger models are much stronger but costly.",
+      "An approach where a small model proposes tokens and a larger model verifies them to accelerate generation.",
+      "Because their inference cost and latency are too high."
+    ]
+  },
+  {
+    "question": [
+      "What is the main difference between speculative thinking and speculative decoding?",
+      "Which structural cues are used to identify challenging reasoning segments?",
+      "How do larger models compare to smaller ones in handling reflective reasoning segments?"
+    ],
+    "ground_truth": [
+      "Speculative thinking operates at the reasoning level, while speculative decoding works at the token level.",
+      "Paragraph breaks followed by reflective phrases like 'wait' or 'alternatively'.",
+      "Larger models are more concise and effective at backtracking."
+    ]
+  },
+  {
+    "question": [
+      "What accuracy improvements did a 1.5B model achieve with speculative thinking on AIME, MATH500, GPQA, and AMC23?",
+      "How did speculative thinking affect non-reasoning models like Qwen-2.5-7B-Instruct?",
+      "What is the overall paradigm shift that speculative thinking introduces?"
+    ],
+    "ground_truth": [
+      "+6.6% on AIME, +6.2% on MATH500, +8.1% on GPQA, and +5.0% on AMC23",
+      "It gained +7.8% on MATH500 and +14.2% on GPQA with large model assistance.",
+      "A new inference-time paradigm fusing small-model efficiency with large-model reasoning strength."
+    ]
+  },
+  {
+    "question": [
+      "What role does '\\n\\n' play in model reasoning processes?",
+      "Which reasoning-supportive tokens often appear after '\\n\\n'?",
+      "What dataset was used to analyze the distribution of preceding tokens for reasoning-supportive words?"
+    ],
+    "ground_truth": [
+      "It acts as a structural clue, often triggering reflective or continuation behavior.",
+      "Tokens such as 'wait', 'hmm', and 'alternatively'.",
+      "MATH500 dataset."
+    ]
+  },
+  {
+    "question": [
+      "According to Table 1, which symbol most frequently precedes reasoning-supportive tokens?",
+      "What proportion of 'wait' tokens appear after '\\n\\n'?",
+      "What does this suggest about the role of '\\n\\n'?"
+    ],
+    "ground_truth": [
+      "The newline symbol '\\n\\n'.",
+      "Over 80%.",
+      "It acts as a thinking cue prompting reflection or continuation."
+    ]
+  },
+  {
+    "question": [
+      "What are the three segment types identified in case analysis using '\\n\\n'?",
+      "What does a reflection segment indicate?",
+      "What is suggested by the first sentence after each '\\n\\n'?"
+    ],
+    "ground_truth": [
+      "Affirmation, Reflection, and Statement.",
+      "That the model intends to reflect on its previous thought.",
+      "That it often contains reasoning-related cues."
+    ]
+  },
+  {
+    "question": [
+      "Which models were compared in Section 2.2?",
+      "What dataset was used for their comparison?",
+      "What two performance metrics were analyzed?"
+    ],
+    "ground_truth": [
+      "Deepseek-distilled Qwen-2.5-32B, 7B, and 1.5B.",
+      "AIME 2022–2024 dataset.",
+      "Accuracy and output length."
+    ]
+  },
+  {
+    "question": [
+      "What general trend was observed between model size, accuracy, and output length?",
+      "Why are incorrect responses typically longer than correct ones?",
+      "What role do reflective phrases play in incorrect responses of smaller models?"
+    ],
+    "ground_truth": [
+      "Larger models show higher accuracy and shorter outputs, while smaller models are less accurate and longer.",
+      "Because they contain excessive self-reflection and redundant reasoning.",
+      "They appear more frequently, signaling hesitation and ineffective backtracking."
+    ]
+  },
+  {
+    "question": [
+      "What pattern do small models overuse when generating incorrect answers?",
+      "How does speculative thinking propose to use '\\n\\n'?",
+      "Why can larger models provide more accurate reasoning at reflective points?"
+    ],
+    "ground_truth": [
+      "They overuse words like 'wait', indicating excessive self-reflection.",
+      "As a control point to delegate reasoning segments to larger models.",
+      "Because they are better at concise reasoning and avoiding redundant backtracking."
+    ]
+  },
+  {
+    "question": [
+      "In speculative thinking, what roles do the speculative and target models play?",
+      "What triggers an Affirmation/Reflection takeover?",
+      "What happens when the speculative model generates an affirmation or reflection sentence after a delimiter?"
+    ],
+    "ground_truth": [
+      "The small model is the speculative model, and the large model is the target model providing supervision.",
+      "When a delimiter '\\n\\n' is followed by an affirmation or reflection sentence.",
+      "The target model takes over and generates the next n1 tokens."
+    ]
+  },
+  {
+    "question": [
+      "What kind of takeover is triggered by verification-related cues?",
+      "What does the negativity counter 'c' track?",
+      "What auxiliary mechanism is used to prevent excessive reflection loops?"
+    ],
+    "ground_truth": [
+      "Verification takeover.",
+      "The number of reflection sentences generated after '\\n\\n'.",
+      "Inserting an auxiliary sentence and delegating the next n3 tokens to the target model."
+    ]
+  },
+  {
+    "question": [
+      "What does the 'modify ratio' indicate in Table 2?",
+      "How did speculative thinking affect the 1.5B model’s estimated inference speed when paired with a 32B model on AIME?",
+      "What was the improvement in accuracy for the 1.5B model on GPQA with 32B assistance?"
+    ],
+    "ground_truth": [
+      "The proportion of tokens in the final output that come from the target model.",
+      "+185.9% compared to the standalone 1.5B model.",
+      "+8.1% improvement."
+    ]
+  },
+  {
+    "question": [
+      "Which benchmark datasets were used in the experiments described in Section 4?",
+      "What three evaluation metrics were used to assess speculative thinking?",
+      "How did speculative thinking affect the 1.5B model’s accuracy on AMC23?"
+    ],
+    "ground_truth": [
+      "AIME 2022–2024, GPQA-Diamond, MATH500, and AMC23.",
+      "Accuracy, average output length, and estimated inference speed.",
+      "It increased by 5.0% with 32B assistance."
+    ]
+  },
+  {
+    "question": [
+      "How much output modification by the target model was needed to significantly improve speculative model reasoning?",
+      "How did the 1.5B speculative model assisted by 32B perform in terms of efficiency compared to the standalone 32B?",
+      "What trade-off does speculative thinking offer according to the analysis?"
+    ],
+    "ground_truth": [
+      "About 20% of the speculative model’s output.",
+      "It outperformed the standalone 32B in generation speed.",
+      "A trade-off between performance and computational efficiency."
+    ]
+  },
+  {
+    "question": [
+      "In speculative decoding experiments, what was the size of the speculative and target models?",
+      "How many tokens at a time does Speculative Thinking take over during generation?",
+      "What major issue does speculative decoding face compared to Speculative Thinking?"
+    ],
+    "ground_truth": [
+      "The speculative model was 7B and the target model was 32B.",
+      "20 tokens at a time.",
+      "It suffers from a high rejection rate where nearly 50% of tokens need to be regenerated by the target model."
+    ]
+  },
+  {
+    "question": [
+      "Why does speculative thinking avoid the high rejection rate issue found in speculative decoding?",
+      "What are the two major categories of current approaches to enhancing LLM reasoning?",
+      "Which project achieved state-of-the-art reasoning performance using GRPO?"
+    ],
+    "ground_truth": [
+      "Because the target model only intervenes when necessary, rather than regenerating rejected tokens.",
+      "Reinforcement learning and supervised fine-tuning.",
+      "DeepSeek."
+    ]
+  },
+  {
+    "question": [
+      "What was the goal of works replicating DeepSeek-R1?",
+      "Which studies emphasized the importance of reasoning step structure over content?",
+      "According to Ji et al. (2025), which part of reasoning instances is especially important for model performance?"
+    ],
+    "ground_truth": [
+      "To uncover potential 'aha moments' in reasoning.",
+      "Li et al. (2025a).",
+      "The initial few tokens in each reasoning instance."
+    ]
+  },
+  {
+    "question": [
+      "Which method was introduced by Kimi 1.5 to address verbose outputs in reasoning models?",
+      "What does TokenSkip aim to achieve?",
+      "What is the main idea behind LightThinker?"
+    ],
+    "ground_truth": [
+      "The Long-to-Short method.",
+      "It improves efficiency by removing redundant or uninformative tokens from training data.",
+      "It compresses intermediate thoughts to produce shorter yet informative reasoning traces."
+    ]
+  },
+  {
+    "question": [
+      "According to Wang et al. (2025) and Sui et al. (2025a), what happens to model output length when reasoning fails?",
+      "Which method detects and terminates reasoning early?",
+      "What is the central proposal of Speculative Thinking in the conclusion section?"
+    ],
+    "ground_truth": [
+      "Outputs become significantly longer due to repetitive generation of supportive tokens like 'wait'.",
+      "Dynasor.",
+      "It leverages larger reasoning models to guide smaller ones through selective delegation at meaningful points."
+    ]
+  },
+  {
+    "question": [
+      "What natural reasoning cues do LLMs exploit that Speculative Thinking leverages?",
+      "On which dataset did experiments show gains in accuracy, average output length, and efficiency?",
+      "What paradigm does the conclusion highlight for model collaboration?"
+    ],
+    "ground_truth": [
+      "Reflection cues such as '\\n\\n'.",
+      "MATH500.",
+      "Collaborative inference between models of different capacities without additional training."
+    ]
+  },
+  {
+    "question": [
+      "What is one limitation of Speculative Thinking regarding the target model?",
+      "Why does the implementation assume both models are from the same family?",
+      "What example of a prompt format is considered important for achieving the best results?"
+    ],
+    "ground_truth": [
+      "It requires the target model to have stronger reasoning abilities than the speculative model.",
+      "To leverage shared KV cache structures for faster inference.",
+      "Please reason step by step, and put your final answer within boxed."
+    ]
+},
+  {
+    "question": [
+      "Which keywords indicate reflection or hesitation in the framework?",
+      "If both reflection and affirmation cues appear in a sentence, which label is chosen in case of a tie?",
+      "What is the configured takeover length for verification-based intervention?"
+    ],
+    "ground_truth": [
+      "“wait”, “alternatively”, “hold on”, “another”, “verify”, “think again”, “recap”, “check”.",
+      "Reflection.",
+      "125 tokens."
+    ]
+  }
+]
+
+
